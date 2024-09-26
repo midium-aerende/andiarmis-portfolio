@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andi-Armis</title>
+    <title>Andi-Armis | Développeur UX/UI</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
@@ -29,7 +29,7 @@
             justify-content: space-between;
             align-items: center;
             background-color: #161b22;
-            padding: 1rem;
+            padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -62,12 +62,11 @@
 
         #hero {
             background: #161b22;
-            background-position: center;
-            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 80vh;
+            padding: 0 2rem;
             transition: background-size 0.5s ease;
         }
 
@@ -133,6 +132,26 @@
             margin-top: 10px;
             color: #8b949e;
             transition: color 0.3s;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background-color: #21262d;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill:hover {
+            transform: translateY(-3px);
         }
 
         .project-cards {
@@ -232,6 +251,7 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="#about">À propos</a></li>
+                <li><a href="#skills">Compétences</a></li>
                 <li><a href="#projects">Projets</a></li>
                 <li><a href="mailto:andrisoamoi@gmail.com">Contact</a></li>
                 <li><a href="https://github.com/midium-aerende" target="_blank">GitHub</a></li>
@@ -241,7 +261,7 @@
 
     <section id="hero">
         <div class="hero-content">
-            <h2>Salut, je suis Développeur</h2>
+            <h2>Salut, je suis Développeur UX/UI</h2>
             <p>Spécialisé dans la création de sites web modernes et réactifs.</p>
             <a href="#projects" class="btn">Voir les Projets</a>
         </div>
@@ -250,6 +270,18 @@
     <section id="about" class="section">
         <h2>À propos de moi</h2>
         <p>Bienvenue sur mon portfolio ! Je suis Andi Armis, un développeur full stack passionné par la création de solutions web modernes et performantes. Avec une expertise à la fois en développement front-end et back-end, j'aime transformer des idées en applications fonctionnelles et esthétiques.</p>
+    </section>
+
+    <section id="skills" class="section">
+        <h2>Compétences</h2>
+        <div class="skills">
+            <div class="skill">HTML & CSS</div>
+            <div class="skill">JavaScript</div>
+            <div class="skill">React</div>
+            <div class="skill">Node.js</div>
+            <div class="skill">UX/UI Design</div>
+            <div class="skill">Figma</div>
+        </div>
     </section>
 
     <section id="projects" class="section">
@@ -264,6 +296,11 @@
                 <i class="material-icons">code</i>
                 <h3><a href="https://midium-aerende.github.io/Dino-Game/" target="_blank">Project 2</a></h3>
                 <p>Jeu Dino.</p>
+            </div>
+            <div class="card">
+                <i class="material-icons">code</i>
+                <h3><a href="https://midium-aerende.github.io/project3/" target="_blank">Project 3</a></h3>
+                <p>Application de gestion de tâches.</p>
             </div>
         </div>
     </section>
