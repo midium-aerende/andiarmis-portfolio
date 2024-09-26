@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
+        /* Styles généraux */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -168,23 +169,21 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* Ajouté pour éviter le débordement */
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .card h3 , a{
+        .card h3, a {
             color: #58a6ff;
             font-family: 'Fira Code', monospace;
             margin-bottom: 1rem;
+            overflow-wrap: break-word; /* Permet le passage à la ligne */
         }
 
         .card p {
             color: #8b949e;
             font-family: 'Fira Code', monospace;
             font-size: 1rem;
+            overflow-wrap: break-word; /* Permet le passage à la ligne */
         }
 
         .material-icons {
@@ -199,6 +198,54 @@
             padding: 20px;
             text-align: center;
             margin-top: auto;
+        }
+
+        /* Styles du formulaire de contact */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            max-width: 500px;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #21262d;
+            color: #c9d1d9;
+        }
+
+        .contact-form button {
+            background-color: #238636;
+            padding: 12px 20px;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form button:hover {
+            background-color: #2ea043;
+        }
+
+        /* Styles pour les notifications toast */
+        .toast {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #238636;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 2000;
+            display: none; /* Masqué par défaut */
+            transition: opacity 0.5s, top 0.5s;
         }
 
         @keyframes fadeIn {
@@ -253,7 +300,7 @@
                 <li><a href="#about">À propos</a></li>
                 <li><a href="#skills">Compétences</a></li>
                 <li><a href="#projects">Projets</a></li>
-                <li><a href="mailto:andrisoamoi@gmail.com">Contact</a></li>
+                <li><a href="#contact">Contact</a></li>
                 <li><a href="https://github.com/midium-aerende" target="_blank">GitHub</a></li>
             </ul>
         </nav>
@@ -261,9 +308,9 @@
 
     <section id="hero">
         <div class="hero-content">
-            <h2>Salut, je suis Développeur UX/UI</h2>
-            <p>Spécialisé dans la création de sites web modernes et réactifs.</p>
-            <a href="#projects" class="btn">Voir les Projets</a>
+            <h2>Développeur Full Stack</h2>
+            <p>Transformons ensemble vos idées en réalité.</p>
+            <a href="#contact" class="btn">Contactez-moi</a>
         </div>
     </section>
 
@@ -275,12 +322,11 @@
     <section id="skills" class="section">
         <h2>Compétences</h2>
         <div class="skills">
-            <div class="skill">HTML & CSS</div>
+            <div class="skill">HTML/CSS</div>
             <div class="skill">JavaScript</div>
             <div class="skill">React</div>
             <div class="skill">Node.js</div>
             <div class="skill">UX/UI Design</div>
-            <div class="skill">Figma</div>
         </div>
     </section>
 
@@ -305,14 +351,69 @@
         </div>
     </section>
 
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>Vous pouvez me contacter en utilisant le formulaire ci-dessous :</p>
+        
+        <div class="contact-form">
+            <input type="text" id="name" placeholder="Votre nom" required>
+            <input type="email" id="email" placeholder="Votre e-mail" required>
+            <textarea id="message" placeholder="Votre message" rows="4" required></textarea>
+            <button type="submit" id="submitBtn">Envoyer</button>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2024 Andi Armis – Full Stack Developer</p>
     </footer>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Portfolio loaded successfully');
         });
+
+        const contactForm = document.querySelector('.contact-form');
+        const submitBtn = document.getElementById('submitBtn');
+        const toast = document.getElementById('toast');
+
+        submitBtn.addEventListener('click', (event) => {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            if (name && email && message) {
+                // Afficher la notification toast
+                showToast(`Merci, ${name}! Votre message a été envoyé avec succès.`);
+
+                // Réinitialiser le formulaire
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+            } else {
+                showToast('Veuillez remplir tous les champs.', true);
+            }
+        });
+
+        function showToast(message, isError = false) {
+            toast.textContent = message;
+            toast.style.backgroundColor = isError ? '#d73a49' : '#238636'; // Couleur rouge pour les erreurs
+            toast.style.display = 'block';
+            toast.style.opacity = 1;
+            toast.style.top = '20px';
+            
+            // Animation pour faire disparaître la notification
+            setTimeout(() => {
+                toast.style.opacity = 0;
+                toast.style.top = '10px';
+                setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 500);
+            }, 3000); // Disparaît après 3 secondes
+        }
     </script>
 
 </body>
