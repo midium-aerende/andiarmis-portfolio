@@ -53,7 +53,7 @@
             color: #c9d1d9;
             text-decoration: none;
             font-weight: bold;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
         }
 
         .nav-links a:hover {
@@ -170,6 +170,8 @@
             text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden; /* Ajouté pour éviter le débordement */
+            opacity: 0; /* Masqué par défaut pour l'animation */
+            transform: translateY(20px); /* Déplacement vers le bas pour l'animation */
         }
 
         .card h3, a {
@@ -217,6 +219,12 @@
             border: 1px solid #ccc;
             background-color: #21262d;
             color: #c9d1d9;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border-color: #58a6ff; /* Changement de couleur au focus */
+            outline: none; /* Enlever le contour par défaut */
         }
 
         .contact-form button {
@@ -226,11 +234,12 @@
             color: white;
             border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.3s;
         }
 
         .contact-form button:hover {
             background-color: #2ea043;
+            transform: translateY(-3px);
         }
 
         /* Styles pour les notifications toast */
@@ -255,38 +264,30 @@
             }
         }
 
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
         /* Styles réactifs */
         @media (max-width: 768px) {
             .nav-links {
                 flex-direction: column;
                 gap: 1rem;
             }
-
-            #hero {
-                min-height: 50vh;
-            }
-
             .hero-content h2 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
-
-            .section {
-                padding: 2rem 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content h2 {
-                font-size: 1.8rem;
-            }
-
             .hero-content p {
                 font-size: 1rem;
             }
-
-            .btn {
-                padding: 10px 20px;
-                font-size: 0.9rem;
+            .section h2 {
+                font-size: 2rem;
+            }
+            .section p {
+                font-size: 1rem;
             }
         }
     </style>
@@ -301,7 +302,6 @@
                 <li><a href="#skills">Compétences</a></li>
                 <li><a href="#projects">Projets</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="https://github.com/midium-aerende" target="_blank">GitHub</a></li>
             </ul>
         </nav>
     </header>
@@ -373,6 +373,15 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Portfolio loaded successfully');
+            
+            // Animation pour les cartes de projets
+            const projectCards = document.querySelectorAll('.card');
+            projectCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = 1; // Rendre visible
+                    card.style.transform = 'translateY(0)'; // Rendre à sa position d'origine
+                }, index * 300); // Délai pour chaque carte
+            });
         });
 
         const contactForm = document.querySelector('.contact-form');
