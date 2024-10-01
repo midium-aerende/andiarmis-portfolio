@@ -8,16 +8,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-        /* Styles généraux */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+            user-select: none;
         }
         
         h1 {
-          display: grid;
+          font-size: 1.5rem;
           align-items: center;
+          transition: transform 0.3s ease;
+          box-sizing: border-box;
+          margin-right: auto;
+        }
+        
+        h1:hover {
+          transform: translateY(-5px) scale(1.05);
         }
 
         body {
@@ -40,7 +47,7 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
+            transition: transform 0.3s ease ,background-color 0.3s ease;
         }
 
         .menu-btn {
@@ -55,8 +62,11 @@
         }
 
         .menu-btn:hover {
-            color: #58a6ff;
-            transform: scale(1.05);
+            transform: translateY(-5px) scale(1.05);
+        }
+        
+        .menu-btn:hover svg rect{
+          fill: #58a6ff;
         }
 
         nav {
@@ -71,6 +81,7 @@
         }
 
         .nav-links a {
+            font-size: 1.2rem;
             color: #c9d1d9;
             text-decoration: none;
             font-weight: bold;
@@ -79,15 +90,7 @@
 
         .nav-links a:hover {
             color: #58a6ff;
-            transform: scale(1.05);
-        }
-        
-        .menu-btn:hover + nav .mobile-nav {
-          display: flex;
-        }
-        
-        .mobile-nav:hover {
-          display: flex;
+            transform: translateY(-5px) scale(1.05);
         }
 
         #hero {
@@ -95,16 +98,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 80vh;
+            min-height: 60vh;
             padding: 0 2rem;
             transition: background-size 0.5s ease;
         }
 
         .hero-content {
+            background: #0003;
+            border-radius: .2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 2rem;
+            padding: 2rem 3rem;
             text-align: center;
             opacity: 0;
             transform: translateY(20px);
@@ -134,9 +139,10 @@
 
         .btn {
             background-color: #238636;
-            padding: 12px 25px;
+            max-height: 5rem;
+            padding: .5rem 1rem;
             color: white;
-            border-radius: 5px;
+            border-radius: .1rem;
             text-decoration: none;
             font-family: 'Fira Code', monospace;
             font-size: 1rem;
@@ -146,11 +152,11 @@
 
         .btn:hover {
             background-color: #2ea043;
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
         }
 
         .section {
-            padding: 4rem 2rem;
+            padding: 3rem 2rem;
             text-align: center;
             opacity: 0;
             transform: translateY(20px);
@@ -160,13 +166,15 @@
 
         .section h2 {
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             transition: color 0.3s;
         }
 
         .section p {
-            font-size: 1.1rem;
-            margin-top: 10px;
+            max-width: 700px;
+            margin-inline: auto;
+            font-size: 1.2rem;
+            margin-top: .5rem;
             color: #8b949e;
             transition: color 0.3s;
         }
@@ -175,51 +183,48 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 2rem;
-            margin-top: 20px;
+            gap: 1rem;
+            margin-top: 1rem;
         }
 
         .skill {
             background-color: #21262d;
-            padding: 15px 25px;
-            border-radius: 5px;
+            padding: .5rem 1rem;
+            border-radius: .2rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
         }
 
         .skill:hover {
-            transform: translateY(-3px);
+            transform: translateY(-5px) scale(1.05);
         }
 
         .project-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+            grid-gap: 2rem;
+            margin-top: 1rem;
         }
 
         .card {
             background-color: #21262d;
-            padding: 20px;
-            border-radius: 8px;
+            padding: 1rem;
+            border-radius: .2rem;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             text-align: left;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
-            opacity: 0;
-            transform: translateY(20px);
         }
 
-        /* Animation lors du hover sur la carte */
         .card:hover{
-            transform: translateY(-10px) scale(5);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Plus grande ombre au survol */
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
         .card h3, a {
             color: #58a6ff;
             font-family: 'Fira Code', monospace;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             overflow-wrap: break-word;
         }
 
@@ -230,73 +235,76 @@
             overflow-wrap: break-word;
         }
 
-        .material-icons {
-            font-size: 48px;
-            color: #58a6ff;
-            margin-bottom: 1rem;
-        }
-
         footer {
+            font-size: 1rem;
             background-color: #161b22;
             color: #8b949e;
-            padding: 20px;
+            padding: 1rem;
             text-align: center;
             margin-top: auto;
         }
 
-        /* Styles du formulaire de contact */
         .contact-form {
+            background: #0003;
+            max-width: 500px;
             display: flex;
+            gap: 1rem;
             flex-direction: column;
+            border-radius: .2rem;
             align-items: center;
             margin-top: 1rem;
+            padding: 1rem;
+            margin-inline: auto;
         }
 
         .contact-form input, .contact-form textarea {
             width: 100%;
             max-width: 500px;
-            padding: 10px;
-            margin: 1rem 0;
-            border-radius: 5px;
+            padding: .5rem;
+            border-radius: .2rem;
             border: 1px solid #ccc;
             background-color: #21262d;
             color: #c9d1d9;
-            transition: border-color 0.3s;
+            transition: transform 0.3s ease,border-color 0.3s;
         }
 
         .contact-form input:focus, .contact-form textarea:focus {
             border-color: #58a6ff;
+            transform: translateY(-3px) scale(1.02);
             outline: none;
+            resize: none;
         }
 
         .contact-form button {
             background-color: #238636;
-            padding: 12px 20px;
+            padding: .5rem 1rem;
             border: none;
             color: white;
-            border-radius: 5px;
+            border-radius: .2rem;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
         }
 
         .contact-form button:hover {
             background-color: #2ea043;
-            transform: translateY(-3px);
+            transform: translateY(-3px) scale(1.05);
         }
 
-        /* Styles pour les notifications toast */
         .toast {
             position: fixed;
             top: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
+            align-self: center;
             background-color: #238636;
             color: white;
-            padding: 10px 20px;
-            border-radius: 5px;
+            padding: .5rem 1rem;
+            border-radius: .2rem;
             z-index: 2000;
             display: none;
-            transition: opacity 0.5s, top 0.5s;
+            transition: opacity 0.5s, top 0.5s, transform 0.3s ease;
+        }
+        
+        .toast:hover {
+          transform: translateY(-5px) scale(1.05);
         }
 
         @keyframes fadeIn {
@@ -309,11 +317,10 @@
         @keyframes fadeOut {
             to {
                 opacity: 0;
-                transform: translateY(-20px);
+                transform: translateY(-1rem);
             }
         }
 
-        /* Styles mobiles */
         .mobile-nav {
             display: none;
             gap: 1rem;
@@ -325,17 +332,23 @@
             right: 0;
             background-color: #161b22;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1000;
             padding: 1rem;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 1000;
         }
-
-        .mobile-nav.open {
-            display: flex; /* Affiche le menu déroulant */
+        
+        .menu-btn:hover + nav .mobile-nav {
+          display: flex;
+          transform: translateY(-3px) scale(1.05);
+        }
+        
+        .mobile-nav:hover {
+          display: flex;
         }
 
         @media (max-width: 800px) {
             .nav-links {
-                display: none; /* Masquer les liens de navigation */
+                display: none;
             }
 
             .menu-btn {
@@ -343,25 +356,27 @@
             }
 
             .mobile-nav {
-                display: none; /* Masqué par défaut */
+                display: none;
             }
 
             .mobile-nav a {
+                font-size: 1rem;
                 padding: .5rem;
                 color: #c9d1d9;
                 text-decoration: none;
                 font-weight: bold;
-                transition: background-color 0.3s, color 0.3s;
+                transition: transform 0.3s, color 0.3s;
             }
 
             .mobile-nav a:hover {
                 color: #58a6ff;
+                transform: translateY(-3px) scale(1.05); 
             }
         }
         
-        @media (min-width: 800px) {
-          .mobile-nav a {
-            display: none;
+        @media (min-width: 400px) {
+          .card h3 , .card p , footer , .section p {
+            font-size: 1rem  ;
           }
         }
     </style>
@@ -419,6 +434,7 @@
             <div class="skill">JavaScript</div>
             <div class="skill">React</div>
             <div class="skill">Node.js</div>
+            <div class="skill">Python</div>
             <div class="skill">UX/UI Design</div>
         </div>
     </section>
@@ -427,18 +443,23 @@
         <h2>Projets</h2>
         <div class="project-cards">
             <div class="card">
-                <i class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h420v-140H160v140Zm500 0h140v-360H660v360ZM160-460h420v-140H160v140Z"/></svg></i>
+                <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h420v-140H160v140Zm500 0h140v-360H660v360ZM160-460h420v-140H160v140Z"/></svg></div>
                 <h3><a href="https://midium-aerende.github.io/project1/" target="_blank">Project 1</a></h3>
                 <p>Application web.</p>
             </div>
             <div class="card">
-                <i class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg></i>
+                <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg></div>
                 <h3><a href="https://midium-aerende.github.io/Dino-Game/" target="_blank">Project 2</a></h3>
                 <p>Jeu Dino.</p>
             </div>
             <div class="card">
-                <i class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg></i>
+                <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h420v-140H160v140Zm500 0h140v-360H660v360ZM160-460h420v-140H160v140Z"/></svg></div>
                 <h3><a href="https://midium-aerende.github.io/project3/" target="_blank">Project 3</a></h3>
+                <p>Application web.</p>
+            </div>
+            <div class="card">
+                <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg></div>
+                <h3><a href="https://midium-aerende.github.io/project4/" target="_blank">Project 4</a></h3>
                 <p>Application de gestion de tâches.</p>
             </div>
         </div>
@@ -449,8 +470,8 @@
         <p>Vous pouvez me contacter en utilisant le formulaire ci-dessous :</p>
         
         <div class="contact-form">
-            <input type="text" id="name" placeholder="Votre nom" required>
-            <input type="email" id="email" placeholder="Votre e-mail" required>
+            <input type="text" id="name" placeholder="Votre nom" required autocomplete="false">
+            <input type="email" id="email" placeholder="Votre e-mail" required autocomplete="false">
             <textarea id="message" placeholder="Votre message" rows="4" required></textarea>
             <button type="submit" id="submitBtn">Envoyer</button>
         </div>
@@ -460,21 +481,11 @@
         <p>&copy; 2024 Andi Armis – Full Stack Developer</p>
     </footer>
 
-    <!-- Notification Toast -->
     <div class="toast" id="toast"></div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Portfolio loaded successfully');
-            
-            // Animation pour les cartes de projets
-            const projectCards = document.querySelectorAll('.card');
-            projectCards.forEach((card, index) => {
-                setTimeout(() => {
-                    card.style.opacity = 1; // Rendre visible
-                    card.style.transform = 'translateY(0)'; // Rendre à sa position d'origine
-                }, index * 300); // Délai pour chaque carte
-            });
         });
 
         const contactForm = document.querySelector('.contact-form');
@@ -488,10 +499,9 @@
             const message = document.getElementById('message').value;
 
             if (name && email && message) {
-                // Afficher la notification toast
+              
                 showToast(`Merci, ${name}! Votre message a été envoyé avec succès.`);
 
-                // Réinitialiser le formulaire
                 document.getElementById('name').value = '';
                 document.getElementById('email').value = '';
                 document.getElementById('message').value = '';
@@ -502,19 +512,19 @@
 
         function showToast(message, isError = false) {
             toast.textContent = message;
-            toast.style.backgroundColor = isError ? '#d73a49' : '#238636'; // Couleur rouge pour les erreurs
+            toast.style.backgroundColor = isError ? '#d73a49' : '#238636';
+            
             toast.style.display = 'block';
             toast.style.opacity = 1;
             toast.style.top = '20px';
             
-            // Animation pour faire disparaître la notification
             setTimeout(() => {
                 toast.style.opacity = 0;
                 toast.style.top = '10px';
                 setTimeout(() => {
                     toast.style.display = 'none';
                 }, 500);
-            }, 3000); // Disparaît après 3 secondes
+            }, 3000);
         }
     </script>
 
