@@ -101,13 +101,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 60vh;
+            height: 70vh;
+            max-height: 700px;
             padding: 0 2rem;
             transition: background-size 0.5s ease;
         }
 
         .hero-content {
             background: #0003;
+            max-width: 600px;
             border-radius: .2rem;
             display: flex;
             flex-direction: column;
@@ -135,7 +137,7 @@
 
         #hero p {
             font-size: 1.2rem;
-            color: #88999e;
+            color: #b8c9ce;
             margin-bottom: 2rem;
             transition: color 0.3s ease;
         }
@@ -387,7 +389,7 @@
 <body>
 
     <header>
-        <h1>Andi Armis</h1>
+        <h1>Andi Armis | Développeur UX/UI</h1>
         <button class="menu-btn" id="menuBtn"><svg
     xmlns="http://www.w3.org/2000/svg"
     width="30"
@@ -420,18 +422,20 @@
     <section id="hero">
         <div class="hero-content">
             <h2>Développeur Full Stack</h2>
-            <p>Transformons ensemble vos idées en réalité.</p>
-            <a href="#contact" class="btn">Contactez-moi</a>
+            <p>Turn your vision into digital reality.
+Avec une approche centrée sur l'utilisateur, je conçois des solutions web intuitives et robustes pour vos projets.</p>
+            <a href="#contact" class="btn">Contactez-moi dès aujourd'hui</a>
         </div>
     </section>
 
     <section id="about" class="section">
         <h2>À propos de moi</h2>
-        <p>Bienvenue sur mon portfolio ! Je suis Andi Armis, un développeur full stack passionné par la création de solutions web modernes et performantes. Avec une expertise à la fois en développement front-end et back-end, j'aime transformer des idées en applications fonctionnelles et esthétiques.</p>
+        <p>Expert en développement Full Stack avec une forte spécialisation en UX/UI, je suis passionné par la création d'expériences utilisateur optimisées. Grâce à une maîtrise des technologies web modernes, je m'engage à transformer des concepts abstraits en solutions pratiques et performantes.
+Mon objectif : allier esthétisme et performance pour offrir des solutions sur-mesure à chacun de mes clients.</p>
     </section>
 
     <section id="skills" class="section">
-        <h2>Compétences</h2>
+        <h2>Mes compétences clés</h2>
         <div class="skills">
             <div class="skill">HTML/CSS</div>
             <div class="skill">JavaScript</div>
@@ -443,22 +447,22 @@
     </section>
 
     <section id="projects" class="section">
-        <h2>Projets</h2>
+        <h2>Réalisations</h2>
         <div class="project-cards">
             <div class="card">
                 <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h420v-140H160v140Zm500 0h140v-360H660v360ZM160-460h420v-140H160v140Z"/></svg></div>
                 <h3><a href="https://midium-aerende.github.io/project1/" target="_blank">Project 1</a></h3>
-                <p>Application web.</p>
+                <p>Application web innovante, alliant performances et interface utilisateur intuitive.</p>
             </div>
             <div class="card">
                 <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg></div>
                 <h3><a href="https://midium-aerende.github.io/Dino-Game/" target="_blank">Project 2</a></h3>
-                <p>Jeu Dino.</p>
+                <p>Jeu Dino : un projet amusant et interactif qui démontre mes compétences en JavaScript.</p>
             </div>
             <div class="card">
                 <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h420v-140H160v140Zm500 0h140v-360H660v360ZM160-460h420v-140H160v140Z"/></svg></div>
                 <h3><a href="https://midium-aerende.github.io/project3/" target="_blank">Project 3</a></h3>
-                <p>Application web.</p>
+                <p>Plateforme web développée pour une meilleure gestion des tâches.</p>
             </div>
             <div class="card">
                 <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg></div>
@@ -469,19 +473,19 @@
     </section>
 
     <section id="contact" class="section">
-        <h2>Contact</h2>
-        <p>Vous pouvez me contacter en utilisant le formulaire ci-dessous :</p>
+        <h2>Restons en contact</h2>
+        <p>Si vous avez des questions ou un projet en tête, n'hésitez pas à me contacter. Je suis disponible pour discuter de vos besoins et de la manière dont je peux vous aider à atteindre vos objectifs. :</p>
         
         <div class="contact-form">
             <input type="text" id="name" placeholder="Votre nom" required autocomplete="false">
             <input type="email" id="email" placeholder="Votre e-mail" required autocomplete="false">
             <textarea id="message" placeholder="Votre message" rows="4" required></textarea>
-            <button type="submit" id="submitBtn">Envoyer</button>
+            <button type="submit" id="submitBtn">Envoyer mon message</button>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Andi Armis – Full Stack Developer</p>
+        <p>&copy; 2024 Andi Armis | Développeur Full Stack</p>
     </footer>
 
     <div class="toast" id="toast"></div>
