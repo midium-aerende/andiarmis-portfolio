@@ -1,543 +1,599 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andi-Armis | Développeur UX/UI</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andi-Armis | Développeur Full Stack</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            user-select: none;
-        }
-        
-        h1 {
-          font-size: 1.2rem;
-          align-items: center;
-          transition: transform 0.3s ease;
-          box-sizing: border-box;
-          margin-right: auto;
-        }
-        
-        h1:hover {
-          transform: translateY(-5px) scale(1.05);
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
 
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            font-family: 'Inter', sans-serif;
-            background: #0d1117;
-            color: #c9d1d9;
-            transition: background-color 0.3s ease;
-        }
+    body,
+    .container,
+    div,
+    section,
+    header,
+    footer {
+      animation: fadeIn 1.2s ease-in-out forwards;
+    }
 
-        header {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            background-color: #161b22;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease ,background-color 0.3s ease;
-        }
+    h1 {
+      font-size: 1.2rem;
+      align-items: center;
+      transition: transform 0.3s ease;
+      box-sizing: border-box;
+      margin-right: auto;
+    }
 
-        .menu-btn {
-            display: none;
-            font-size: 1.2rem;
-            align-items: center;
-            background: none;
-            border: none;
-            color: #c9d1d9;
-            cursor: pointer;
-            transition: color 0.3s, transform 0.3s;
-        }
+    h1:hover {
+      transform: translateY(-5px) scale(1.05);
+    }
 
-        .menu-btn:hover {
-            transform: translateY(-5px) scale(1.05);
-        }
-        
-        .menu-btn:hover svg rect{
-          fill: #58a6ff;
-        }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: 'Inter', sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      transition: background-color 0.3s ease;
+    }
 
-        nav {
-            display: flex;
-            gap: 1.5rem;
-        }
+    header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      background-color: #161b22;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
 
-        .nav-links {
-            list-style: none;
-            display: flex;
-            gap: 1.5rem;
-        }
+    .menu-btn {
+      display: none;
+      font-size: 1.2rem;
+      align-items: center;
+      background: none;
+      border: none;
+      color: #c9d1d9;
+      cursor: pointer;
+      transition: color 0.3s, transform 0.3s;
+    }
 
-        .nav-links a {
-            font-size: 1rem;
-            color: #c9d1d9;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s, transform 0.3s;
-        }
+    .menu-btn:hover {
+      transform: translateY(-5px) scale(1.05);
+    }
 
-        .nav-links a:hover {
-            color: #58a6ff;
-            transform: translateY(-5px) scale(1.05);
-        }
+    .menu-btn:hover svg rect {
+      fill: #58a6ff;
+    }
 
-        #hero {
-            background: #161b22;
-            background-image: url('./fond.png');
-            background-position: center;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 70vh;
-            max-height: 700px;
-            padding: 0 2rem;
-            transition: background-size 0.5s ease;
-        }
+    nav {
+      display: flex;
+      gap: 1.5rem;
+    }
 
-        .hero-content {
-            background: #0003;
-            max-width: 600px;
-            border-radius: .2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 1rem 2rem;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1s forwards;
-        }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
 
-        #hero h1 {
-            font-size: 2rem;
-            color: #c9d1d9;
-            margin-bottom: 1rem;
-            transition: color 0.3s ease;
-        }
+    .nav-links a {
+      font-size: 1rem;
+      color: #c9d1d9;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s, transform 0.3s;
+    }
 
-        #hero h2 {
-            font-size: 1rem;
-            color: #c9d1d9;
-            margin-bottom: 1rem;
-            transition: color 0.3s ease;
-        }
+    .nav-links a:hover {
+      color: #58a6ff;
+      transform: translateY(-5px) scale(1.05);
+    }
 
-        #hero p {
-            font-size: .9rem;
-            color: #b8c9ce;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
-        }
+    #hero {
+      background: #161b22;
+      background-image: url('./fond.png');
+      background-position: center;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 70vh;
+      max-height: 700px;
+      padding: 0 2rem;
+      transition: background-size 0.5s ease;
+    }
 
-        .btn {
-            background-color: #238636;
-            max-height: 4rem;
-            padding: .5rem 1rem;
-            color: white;
-            border-radius: .1rem;
-            text-decoration: none;
-            font-family: 'Fira Code', monospace;
-            font-size: .9rem;
-            transition: background-color 0.3s, transform 0.3s;
-            cursor: pointer;
-        }
+    .hero-content {
+      background: #0003;
+      max-width: 600px;
+      border-radius: .2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem 2rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s forwards;
+    }
 
-        .btn:hover {
-            background-color: #2ea043;
-            transform: translateY(-3px) scale(1.05);
-        }
+    #hero h1 {
+      font-size: 2rem;
+      color: #c9d1d9;
+      margin-bottom: 1rem;
+      transition: color 0.3s ease;
+    }
 
-        .section {
-            padding: 3rem 2rem;
-            text-align: center;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: fadeIn 1.2s forwards;
-            animation-delay: 0.5s;
-        }
+    #hero h2 {
+      font-size: 1rem;
+      color: #c9d1d9;
+      margin-bottom: 1rem;
+      transition: color 0.3s ease;
+    }
 
-        .section h2 {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s;
-        }
+    #hero p {
+      font-size: .9rem;
+      color: #b8c9ce;
+      margin-bottom: 2rem;
+      transition: color 0.3s ease;
+    }
 
-        .section p {
-            max-width: 700px;
-            margin-inline: auto;
-            font-size: 1rem;
-            margin-top: .5rem;
-            color: #8b949e;
-            transition: color 0.3s;
-        }
+    .btn {
+      background-color: #238636;
+      max-height: 4rem;
+      padding: .5rem 1rem;
+      color: white;
+      border-radius: .1rem;
+      text-decoration: none;
+      font-family: 'Fira Code', monospace;
+      font-size: .9rem;
+      transition: background-color 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
 
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+    .btn:hover {
+      background-color: #2ea043;
+      transform: translateY(-3px) scale(1.05);
+    }
 
-        .skill {
-            background-color: #21262d;
-            font-size: 1rem;
-            padding: .5rem 1rem;
-            border-radius: .2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
+    .section {
+      padding: 3rem 2rem;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1.2s forwards;
+      animation-delay: 0.5s;
+    }
 
-        .skill:hover {
-            transform: translateY(-5px) scale(1.05);
-        }
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      transition: color 0.3s;
+    }
 
-        .project-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-            grid-gap: 2rem;
-            margin-top: 1rem;
-        }
+    .section p {
+      max-width: 700px;
+      margin-inline: auto;
+      font-size: 1rem;
+      margin-top: .5rem;
+      color: #8b949e;
+      transition: color 0.3s;
+    }
 
-        .card {
-            background-color: #21262d;
-            padding: 1rem;
-            border-radius: .2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            overflow: hidden;
-        }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
 
-        .card:hover{
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+    .skill {
+      background-color: #21262d;
+      font-size: 1rem;
+      padding: .5rem 1rem;
+      border-radius: .2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
 
-        .card h3, a {
-            color: #58a6ff;
-            font-family: 'Fira Code', monospace;
-            margin-bottom: 1rem;
-            overflow-wrap: break-word;
-        }
+    .skill:hover {
+      transform: translateY(-5px) scale(1.05);
+    }
 
-        .card p {
-            color: #8b949e;
-            font-family: 'Fira Code', monospace;
-            font-size: .9rem;
-            overflow-wrap: break-word;
-        }
+    .project-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      grid-gap: 2rem;
+      margin-top: 1rem;
+    }
 
-        footer {
-            font-size: 1rem;
-            background-color: #161b22;
-            color: #8b949e;
-            padding: 1rem;
-            text-align: center;
-            margin-top: auto;
-        }
+    .card {
+      background-color: #21262d;
+      padding: 1rem;
+      border-radius: .2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
 
-        .contact-form {
-            background: #0003;
-            max-width: 500px;
-            display: flex;
-            gap: 1rem;
-            flex-direction: column;
-            border-radius: .2rem;
-            align-items: center;
-            margin-top: 1rem;
-            padding: 1rem;
-            margin-inline: auto;
-        }
+    .card:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
 
-        .contact-form input, .contact-form textarea {
-            width: 100%;
-            font-size: .9rem ;
-            max-width: 500px;
-            padding: .5rem;
-            border-radius: .2rem;
-            border: 1px solid #ccc;
-            background-color: #21262d;
-            color: #c9d1d9;
-            transition: transform 0.3s ease,border-color 0.3s;
-        }
+    .card h3,
+    a {
+      color: #58a6ff;
+      font-family: 'Fira Code', monospace;
+      margin-bottom: 1rem;
+      overflow-wrap: break-word;
+    }
 
-        .contact-form input:focus, .contact-form textarea:focus {
-            border-color: #58a6ff;
-            transform: translateY(-3px) scale(1.02);
-            outline: none;
-            resize: none;
-        }
+    .card p {
+      color: #8b949e;
+      font-family: 'Fira Code', monospace;
+      font-size: .9rem;
+      overflow-wrap: break-word;
+    }
 
-        .contact-form button {
-            background-color: #238636;
-            padding: .5rem 1rem;
-            border: none;
-            color: white;
-            border-radius: .2rem;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s;
-        }
+    footer {
+      font-size: 1rem;
+      background-color: #161b22;
+      color: #8b949e;
+      padding: 1rem;
+      text-align: center;
+      margin-top: auto;
+    }
 
-        .contact-form button:hover {
-            background-color: #2ea043;
-            transform: translateY(-3px) scale(1.05);
-        }
+    .contact-form {
+      background: #0003;
+      max-width: 500px;
+      display: flex;
+      gap: 1rem;
+      flex-direction: column;
+      border-radius: .2rem;
+      align-items: center;
+      margin-top: 1rem;
+      padding: 1rem;
+      margin-inline: auto;
+    }
 
-        .toast {
-            font-size: 1rem;
-            position: fixed;
-            top: 2rem;
-            align-self: center;
-            background-color: #238636;
-            color: white;
-            padding: .5rem 1rem;
-            border-radius: .2rem;
-            z-index: 2000;
-            display: none;
-            transition: opacity 0.5s, top 0.5s, transform 0.3s ease;
-        }
-        
-        .toast:hover {
-          transform: translateY(-5px) scale(1.05);
-        }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      font-size: .9rem;
+      max-width: 500px;
+      padding: .5rem;
+      border-radius: .2rem;
+      border: 1px solid #ccc;
+      background-color: #21262d;
+      color: #c9d1d9;
+      transition: transform 0.3s ease, border-color 0.3s;
+    }
 
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #58a6ff;
+      transform: translateY(-3px) scale(1.02);
+      outline: none;
+      resize: none;
+    }
 
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                transform: translateY(-1rem);
-            }
-        }
+    .contact-form button {
+      background-color: #238636;
+      padding: .5rem 1rem;
+      border: none;
+      color: white;
+      border-radius: .2rem;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
 
-        .mobile-nav {
-            display: none;
-            gap: 1rem;
-            list-style: none;
-            max-width: 10rem;
-            flex-direction: column;
-            position: absolute;
-            top: 4rem;
-            right: 0;
-            background-color: #161b22;
-            border-radius: .2rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 1em;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .menu-btn:hover + nav .mobile-nav {
-          display: flex;
-          transform: translateY(-3px) scale(1.05);
-        }
-        
-        .mobile-nav:hover {
-          display: flex;
-        }
+    .contact-form button:hover {
+      background-color: #2ea043;
+      transform: translateY(-3px) scale(1.05);
+    }
 
-        @media (max-width: 800px) {
-            .nav-links {
-                display: none;
-            }
+    .toast {
+      font-size: 1rem;
+      position: fixed;
+      top: 2rem;
+      align-self: center;
+      background-color: #238636;
+      color: white;
+      padding: .5rem 1rem;
+      border-radius: .2rem;
+      z-index: 2000;
+      display: none;
+      transition: opacity 0.5s, top 0.5s, transform 0.3s ease;
+    }
 
-            .menu-btn {
-                display: grid;
-            }
+    .toast:hover {
+      transform: translateY(-5px) scale(1.05);
+    }
 
-            .mobile-nav {
-                display: none;
-            }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-            .mobile-nav a {
-                font-size: .9rem;
-                padding: .5rem;
-                color: #c9d1d9;
-                text-decoration: none;
-                font-weight: bold;
-                transition: transform 0.3s, color 0.3s;
-            }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: translateY(-1rem);
+      }
+    }
 
-            .mobile-nav a:hover {
-                color: #58a6ff;
-                transform: translateY(-3px) scale(1.05); 
-            }
-        }
-        
-        @media (min-width: 400px) {
-          .card h3 , .card p , footer , .section p {
-            font-size: .9rem  ;
-          }
-        }
-    </style>
+    .mobile-nav {
+      display: none;
+      gap: 1rem;
+      list-style: none;
+      max-width: 10rem;
+      flex-direction: column;
+      position: absolute;
+      top: 4rem;
+      right: 0;
+      background-color: #161b22;
+      border-radius: .2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      padding: 1em;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 1000;
+    }
+
+    .menu-btn:hover+nav .mobile-nav {
+      display: flex;
+      transform: translateY(-3px) scale(1.05);
+    }
+
+    .mobile-nav:hover {
+      display: flex;
+    }
+
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .menu-btn {
+        display: grid;
+      }
+
+      .mobile-nav {
+        display: none;
+      }
+
+      .mobile-nav a {
+        font-size: .9rem;
+        padding: .5rem;
+        color: #c9d1d9;
+        text-decoration: none;
+        font-weight: bold;
+        transition: transform 0.3s, color 0.3s;
+      }
+
+      .mobile-nav a:hover {
+        color: #58a6ff;
+        transform: translateY(-3px) scale(1.05);
+      }
+    }
+
+    @media (min-width: 400px) {
+
+      .card h3,
+      .card p,
+      footer,
+      .section p {
+        font-size: .9rem;
+      }
+    }
+
+    /* Keyframe animations */
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes easeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <header>
-        <h1>Andi Armis | Développeur UX/UI</h1>
-        <button class="menu-btn" id="menuBtn"><svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="30"
-    height="20"
-    viewBox="0 0 30 20"
->
-    <rect x="0" y="0" width="30" height="4" rx="2" fill="#c9d1d9" />
-    <rect x="0" y="8" width="30" height="4" rx="2" fill="#c9d1d9" />
-    <rect x="0" y="16" width="30" height="4" rx="2" fill="#c9d1d9" />
-</svg>
-</button>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#skills">Compétences</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://github.com/midium-aerende" target="_blank">GitHub</a></li>
-            </ul>
-            <ul class="mobile-nav" id="mobileNav">
-                <li><a href="#about">À propos</a></li>
-                <li><a href="#skills">Compétences</a></li>
-                <li><a href="#projects">Projets</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="https://github.com/midium-aerende" target="_blank">GitHub</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <h1>Andi Armis | Développeur Full Stack</h1>
+    <button class="menu-btn" id="menuBtn"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="20" viewBox="0 0 30 20">
+        <rect x="0" y="0" width="30" height="4" rx="2" fill="#c9d1d9" />
+        <rect x="0" y="8" width="30" height="4" rx="2" fill="#c9d1d9" />
+        <rect x="0" y="16" width="30" height="4" rx="2" fill="#c9d1d9" />
+      </svg>
+    </button>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://github.com/midium-aerende" target="_blank">GitHub</a></li>
+      </ul>
+      <ul class="mobile-nav" id="mobileNav">
+        <li><a href="#about">À propos</a></li>
+        <li><a href="#skills">Compétences</a></li>
+        <li><a href="#projects">Projets</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://github.com/midium-aerende" target="_blank">GitHub</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section id="hero">
-        <div class="hero-content">
-            <h2>Développeur Full Stack</h2>
-            <p>Turn your vision into digital reality.
-Avec une approche centrée sur l'utilisateur, je conçois des solutions web intuitives et robustes pour vos projets.</p>
-            <a href="#contact" class="btn">Contactez-moi dès aujourd'hui</a>
-        </div>
-    </section>
+  <section id="hero">
+    <div class="hero-content">
+      <h2>Développeur Full Stack</h2>
+      <p>Transformez votre vision en réalité numérique ! J'utilise une approche centrée sur l'utilisateur pour créer des solutions web intuitives et performantes.</p>
+      <a href="#contact" class="btn">Contactez-moi dès aujourd'hui</a>
+    </div>
+  </section>
 
-    <section id="about" class="section">
-        <h2>À propos de moi</h2>
-        <p>Expert en développement Full Stack avec une forte spécialisation en UX/UI, je suis passionné par la création d'expériences utilisateur optimisées. Grâce à une maîtrise des technologies web modernes, je m'engage à transformer des concepts abstraits en solutions pratiques et performantes.
-Mon objectif : allier esthétisme et performance pour offrir des solutions sur-mesure à chacun de mes clients.</p>
-    </section>
+  <section id="about" class="section">
+    <h2>À propos de moi</h2>
+    <p>Passionné par le développement Full Stack et l'UX/UI, je transforme des idées en solutions pratiques. Mon but : allier esthétique et efficacité pour chaque projet.</p>
+  </section>
 
-    <section id="skills" class="section">
-        <h2>Mes compétences clés</h2>
-        <div class="skills">
-            <div class="skill">HTML/CSS</div>
-            <div class="skill">JavaScript</div>
-            <div class="skill">React</div>
-            <div class="skill">Node.js</div>
-            <div class="skill">Python</div>
-            <div class="skill">UX/UI Design</div>
-        </div>
-    </section>
+  <section id="skills" class="section">
+    <h2>Mes compétences clés</h2>
+    <div class="skills">
+      <div class="skill">HTML/CSS</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">React</div>
+      <div class="skill">Node.js</div>
+      <div class="skill">Python</div>
+      <div class="skill">UX/UI Design</div>
+    </div>
+  </section>
 
-    <section id="projects" class="section">
-        <h2>Réalisations</h2>
-        <div class="project-cards">
-            <div class="card">
-                <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h420v-140H160v140Zm500 0h140v-360H660v360ZM160-460h420v-140H160v140Z"/></svg></div>
-                <h3><a href="https://midium-aerende.github.io/project1/" target="_blank">Project 1</a></h3>
-                <p>Application web innovante, alliant performances et interface utilisateur intuitive.</p>
-            </div>
-            <div class="card">
-                <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg></div>
-                <h3><a href="https://midium-aerende.github.io/Dino-Game/" target="_blank">Project 2</a></h3>
-                <p>Jeu Dino : un projet amusant et interactif qui démontre mes compétences en JavaScript.</p>
-            </div>
-            <div class="card">
-                <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h420v-140H160v140Zm500 0h140v-360H660v360ZM160-460h420v-140H160v140Z"/></svg></div>
-                <h3><a href="https://midium-aerende.github.io/project3/" target="_blank">Project 3</a></h3>
-                <p>Plateforme web développée pour une meilleure gestion des tâches.</p>
-            </div>
-            <div class="card">
-                <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff"><path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z"/></svg></div>
-                <h3><a href="https://midium-aerende.github.io/project4/" target="_blank">Project 4</a></h3>
-                <p>Application de gestion de tâches.</p>
-            </div>
-        </div>
-    </section>
+  <section id="projects" class="section">
+    <h2>Réalisations</h2>
+    <div class="project-cards">
+      <div class="card">
+        <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff">
+            <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h420v-140H160v140Zm500 0h140v-360H660v360ZM160-460h420v-140H160v140Z" />
+          </svg></div>
+        <h3><a href="https://midium-aerende.github.io/project1/" target="_blank">Project 1</a></h3>
+        <p>Une application web innovante avec une interface intuitive.</p>
+      </div>
+      <div class="card">
+        <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff">
+            <path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z" />
+          </svg></div>
+        <h3><a href="https://midium-aerende.github.io/Dino-Game/" target="_blank">Project 2</a></h3>
+        <p>Jeu Dino : amusant et interactif, idéal pour montrer mes compétences en JavaScript."</p>
+      </div>
+      <div class="card">
+        <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff">
+            <path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm0-80h420v-140H160v140Zm500 0h140v-360H660v360ZM160-460h420v-140H160v140Z" />
+          </svg></div>
+        <h3><a href="https://midium-aerende.github.io/call-log-manager/" target="_blank">Project 3</a></h3>
+        <p>Plateforme pour optimiser la gestion des tâches.</p>
+      </div>
+      <div class="card">
+        <div class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="2rem" viewBox="0 -960 960 960" width="2rem" fill="#58a6ff">
+            <path d="m193-479 155 155q11 11 11 28t-11 28q-11 11-28 11t-28-11L108-452q-6-6-8.5-13T97-480q0-8 2.5-15t8.5-13l184-184q12-12 28.5-12t28.5 12q12 12 12 28.5T349-635L193-479Zm574-2L612-636q-11-11-11-28t11-28q11-11 28-11t28 11l184 184q6 6 8.5 13t2.5 15q0 8-2.5 15t-8.5 13L668-268q-12 12-28 11.5T612-269q-12-12-12-28.5t12-28.5l155-155Z" />
+          </svg></div>
+        <h3><a href="https://midium-aerende.github.io/Quiz/index.html" target="_blank">Project 4</a></h3>
+        <p>Quiz interactif : testez vos connaissances de manière ludique.</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact" class="section">
-        <h2>Restons en contact</h2>
-        <p>Si vous avez des questions ou un projet en tête, n'hésitez pas à me contacter. Je suis disponible pour discuter de vos besoins et de la manière dont je peux vous aider à atteindre vos objectifs. :</p>
-        
-        <div class="contact-form">
-            <input type="text" id="name" placeholder="Votre nom" required autocomplete="false">
-            <input type="email" id="email" placeholder="Votre e-mail" required autocomplete="false">
-            <textarea id="message" placeholder="Votre message" rows="4" required></textarea>
-            <button type="submit" id="submitBtn">Envoyer mon message</button>
-        </div>
-    </section>
+  <section id="contact" class="section">
+    <h2>Restons en contact</h2>
+    <p>Questions ou projets en tête ? Contactez-moi ! Je suis là pour vous aider à concrétiser vos idées. :</p>
 
-    <footer>
-        <p>&copy; 2024 Andi Armis | Développeur Full Stack</p>
-    </footer>
+    <div class="contact-form">
+      <input type="text" id="name" placeholder="Votre nom" required autocomplete="false">
+      <input type="email" id="email" placeholder="Votre e-mail" required autocomplete="false">
+      <textarea id="message" placeholder="Votre message" rows="4" required></textarea>
+      <button type="submit" id="submitBtn">Envoyer mon message</button>
+    </div>
+  </section>
 
-    <div class="toast" id="toast"></div>
+  <footer>
+    <p>&copy; 2024 Andi Armis | Développeur Full Stack</p>
+  </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Portfolio loaded successfully');
-        });
+  <div class="toast" id="toast"></div>
 
-        const contactForm = document.querySelector('.contact-form');
-        const submitBtn = document.getElementById('submitBtn');
-        const toast = document.getElementById('toast');
-
-        submitBtn.addEventListener('click', (event) => {
-            event.preventDefault();
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
-
-            if (name && email && message) {
-              
-                showToast(`Merci, ${name}! Votre message a été envoyé avec succès.`);
-
-                document.getElementById('name').value = '';
-                document.getElementById('email').value = '';
-                document.getElementById('message').value = '';
-            } else {
-                showToast('Veuillez remplir tous les champs.', true);
-            }
-        });
-
-        function showToast(message, isError = false) {
-            toast.textContent = message;
-            toast.style.backgroundColor = isError ? '#d73a49' : '#238636';
-            
-            toast.style.display = 'block';
-            toast.style.opacity = 1;
-            toast.style.top = '20px';
-            
-            setTimeout(() => {
-                toast.style.opacity = 0;
-                toast.style.top = '10px';
-                setTimeout(() => {
-                    toast.style.display = 'none';
-                }, 500);
-            }, 3000);
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('Portfolio loaded successfully');
+    });
+    
+    const contactForm = document.querySelector('.contact-form');
+    const submitBtn = document.getElementById('submitBtn');
+    const toast = document.getElementById('toast');
+    
+    submitBtn.addEventListener('click', (event) => {
+        event.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+    
+        if (name && email && message) {
+          
+            showToast(`Merci, ${name}! Votre message a été envoyé avec succès.`);
+    
+            document.getElementById('name').value = '';
+            document.getElementById('email').value = '';
+            document.getElementById('message').value = '';
+        } else {
+            showToast('Veuillez remplir tous les champs.', true);
         }
-    </script>
+    });
+    
+    function showToast(message, isError = false) {
+        toast.textContent = message;
+        toast.style.backgroundColor = isError ? '#d73a49' : '#238636';
+        
+        toast.style.display = 'block';
+        toast.style.opacity = 1;
+        toast.style.top = '20px';
+        
+        setTimeout(() => {
+            toast.style.opacity = 0;
+            toast.style.top = '10px';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 500);
+        }, 3000);
+    }
+  </script>
 
 </body>
+
 </html>
